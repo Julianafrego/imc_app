@@ -1,0 +1,21 @@
+{
+    "imc_results": [
+      {
+        "range": "underweight",
+        "message": "You are severely underweight. It is necessary to follow a diet focused on gaining muscle mass."
+      },
+      {
+        "range": "normal",
+        "message": "Your weight is ideal. Maintain a balanced diet and regularly practice physical activities."
+      },
+      {
+        "range": "overweight",
+        "message": "You are overweight. It's important to adjust your diet and incorporate physical exercises."
+      },
+      {
+        "range": "obese",
+        "message": "You are obese. Consider seeking medical advice and adopting a healthy diet."
+      }
+    ]
+  }
+  

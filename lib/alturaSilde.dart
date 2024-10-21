@@ -39,6 +39,7 @@ class _AlturaSliderState extends State<AlturaSlider> {
                 Text(
                   '${currentSliderValue.toStringAsFixed(0)} ',
                   style: const TextStyle(
+                     fontWeight: FontWeight.bold,
                     color: MyColors.branco,
                     fontSize: 50,
                   ),

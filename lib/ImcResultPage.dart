@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:imc_app/main.dart';
 import './colors.dart';
 
-
 class ImcResultPage extends StatelessWidget {
   final double imc;
   final String name;
@@ -54,37 +53,43 @@ class ImcResultPage extends StatelessWidget {
               ),
               Flexible(
                 flex: 4,
-                child: Column(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Text(' $name ',
-                          style: const TextStyle(
-                              color: MyColors.verde, fontSize: 30)),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        alignment: Alignment.center,
-                        child: Text(
-                          ' $imcRound ',
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 60),
+                child: Container(
+                  padding: EdgeInsets.only(top: 20),
+                  color: MyColors.azulButtonNoPress,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Text(' $name ',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: MyColors.verde,
+                                fontSize: 30)),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            ' $imcRound ',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 60),
+                          ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        padding: const EdgeInsets.all(24),
-                        alignment: Alignment.topCenter,
-                        child: Text(' $message ',
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(color: Colors.white)),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          padding: const EdgeInsets.all(24),
+                          alignment: Alignment.topCenter,
+                          child: Text(' $message ',
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(color: Colors.white)),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               Expanded(

@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:imc_app/colors.dart'; // Certifique-se que a importação de cores esteja correta
 
 class WeightAgeSelection extends StatefulWidget {
+  final ValueChanged<int> onWeightChanged; // Callback para o peso
 
-    final ValueChanged<int> onWeightChanged; // Callback para o peso
-     
-    const WeightAgeSelection({super.key, required this.onWeightChanged});
+  const WeightAgeSelection({super.key, required this.onWeightChanged});
   @override
   _WeightAgeSelectionState createState() => _WeightAgeSelectionState();
 }
@@ -19,11 +18,17 @@ class _WeightAgeSelectionState extends State<WeightAgeSelection> {
       body: Row(
         children: [
           Expanded(
-            child: Addwidget(weightAge: 'WEIGHT', valorInicial: 20, onValueChanged:  widget.onWeightChanged),
+            child: Addwidget(
+                weightAge: 'WEIGHT',
+                valorInicial: 20,
+                onValueChanged: widget.onWeightChanged),
           ),
           Expanded(
-            child: Addwidget(weightAge: 'AGE', valorInicial: 20,  onValueChanged: (age) {
-            },),
+            child: Addwidget(
+              weightAge: 'AGE',
+              valorInicial: 20,
+              onValueChanged: (age) {},
+            ),
           ),
         ],
       ),
@@ -35,22 +40,26 @@ class Addwidget extends StatefulWidget {
   final String weightAge;
   final ValueChanged<int> onValueChanged; // Callback para enviar o valor
   final int valorInicial;
-  
-  const Addwidget({super.key, required this.weightAge, required this.valorInicial, required this.onValueChanged});
-  
+
+  const Addwidget(
+      {super.key,
+      required this.weightAge,
+      required this.valorInicial,
+      required this.onValueChanged});
 
   @override
   State<Addwidget> createState() => _AddwidgetState();
 }
 
 class _AddwidgetState extends State<Addwidget> {
-   late int valor;
+  late int valor;
 
   @override
   void initState() {
     super.initState();
     valor = widget.valorInicial; // Inicializa com o valor inicial 20
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -70,7 +79,9 @@ class _AddwidgetState extends State<Addwidget> {
           Text(
             '$valor',
             style: const TextStyle(
-                fontSize: 40, color: MyColors.branco), // Estilo do texto
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+                color: MyColors.branco), // Estilo do texto
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -81,11 +92,10 @@ class _AddwidgetState extends State<Addwidget> {
                   setState(() {
                     if (valor > 0) {
                       valor--;
-                       widget.onValueChanged(valor); // Chama a função callback
+                      widget.onValueChanged(valor); // Chama a função callback
                     }
                   });
                 },
-                
               ),
               const SizedBox(width: 10), // Espaço entre os botões
               CircularAddButton(
@@ -94,11 +104,10 @@ class _AddwidgetState extends State<Addwidget> {
                   setState(() {
                     if (valor > 0) {
                       valor++;
-                       widget.onValueChanged(valor); // Chama a função callback
+                      widget.onValueChanged(valor); // Chama a função callback
                     }
                   });
                 },
-            
               ),
             ],
           ),

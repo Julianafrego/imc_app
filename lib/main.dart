@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Calculadora IMC',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: MyColors.azulFundo,
         primarySwatch: Colors.blue,
@@ -69,7 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ImcResultPage(imc: imc, name: name, message: message),
+        builder: (context) =>
+            ImcResultPage(imc: imc, name: name, message: message),
       ),
     );
   }

@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import './colors.dart';
 class AlturaSlider extends StatefulWidget {
-  const AlturaSlider({super.key});
+
+  final ValueChanged<int> onHeightChanged; 
+
+  const AlturaSlider({super.key, required this.onHeightChanged});
 
   @override
   State<AlturaSlider> createState() => _AlturaSliderState();
 }
 
 class _AlturaSliderState extends State<AlturaSlider> {
-  double _currentSliderValue = 100;
+  double currentSliderValue = 100;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-          margin: const EdgeInsets.all(5.0), 
+    return Container(
         
+        margin: const EdgeInsets.only(right: 5.0, left: 5.0, bottom: 5.0), 
+          
         decoration: BoxDecoration(
           color: MyColors.azulButtonNoPress, 
           borderRadius: BorderRadius.circular(10), 
@@ -34,7 +37,7 @@ class _AlturaSliderState extends State<AlturaSlider> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '${_currentSliderValue.toStringAsFixed(0)} ',
+                  '${currentSliderValue.toStringAsFixed(0)} ',
                   style: const TextStyle(
                     color: MyColors.branco,
                     fontSize: 50,
@@ -54,19 +57,19 @@ class _AlturaSliderState extends State<AlturaSlider> {
               ],
             ),
             Slider(
-              value: _currentSliderValue,
+              value: currentSliderValue,
               min: 10,
               max: 250,
-              label: _currentSliderValue.toString(),
+              label: currentSliderValue.toString(),
               onChanged: (double value) {
                 setState(() {
-                  _currentSliderValue = value;
+                  currentSliderValue = value;
+                  widget.onHeightChanged(currentSliderValue.round());
                 });
               },
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 }

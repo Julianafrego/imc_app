@@ -1,50 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:imc_app/colors.dart';
 
-class GenderSelectionScreen extends StatefulWidget {
+class GenderSelection extends StatefulWidget {
   @override
-  _GenderSelectionScreenState createState() => _GenderSelectionScreenState();
+  _GenderSelectionState createState() => _GenderSelectionState();
 }
 
-class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
+class _GenderSelectionState extends State<GenderSelection> {
   String? selectedGender; // Variável para armazenar o gênero selecionado
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: 
-          Row(
-            children: [
-              Expanded(
-                child: GeneroButton(
-                  iconData: Icons.male,
-                  label: 'Male',
-                  isSelected: selectedGender == 'Male',
-                  onSelected: () {
-                    setState(() {
-                      selectedGender =
-                          'Male'; // Define 'Male' como o gênero selecionado
-                    });
-                  },
-                ),
-              ),
-              Expanded(
-                child: GeneroButton(
-                  iconData: Icons.female,
-                  label: 'Female',
-                    isSelected: selectedGender == 'Female',
-                  onSelected: () {
-                    setState(() {
-                      selectedGender =
-                          'Female'; // Define 'Female' como o gênero selecionado
-                    });
-                  },
-                ),
-              ),
-            ],
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Expanded(
+            child: GeneroButton(
+              iconData: Icons.male,
+              label: 'MALE',
+              isSelected: selectedGender == 'Male',
+              onSelected: () {
+                setState(() {
+                  selectedGender =
+                      'Male'; // Define 'Male' como o gênero selecionado
+                });
+              },
+            ),
           ),
-        
-    );
+          Expanded(
+            child: GeneroButton(
+              iconData: Icons.female,
+              label: 'FEMALE',
+              isSelected: selectedGender == 'Female',
+              onSelected: () {
+                setState(() {
+                  selectedGender =
+                      'Female'; // Define 'Female' como o gênero selecionado
+                });
+              },
+            ),
+          ),
+        ],
+      );
   }
 }
 
@@ -83,9 +80,10 @@ class _GeneroButtonState extends State<GeneroButton> {
           margin: const EdgeInsets.all(5.0),
           height: screenHeight * 0.2,
           decoration: BoxDecoration(
-            color: widget.isSelected 
-              ? MyColors.azulButtonPress // Cor quando o botão está selecionado
-              : MyColors.azulButtonNoPress,
+            color: widget.isSelected
+                ? MyColors
+                    .azulButtonPress // Cor quando o botão está selecionado
+                : MyColors.azulButtonNoPress,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Column(
@@ -97,7 +95,6 @@ class _GeneroButtonState extends State<GeneroButton> {
                 size: 50,
                 color: MyColors.branco,
               ),
-              const SizedBox(height: 8), // Espaço entre o ícone e o rótulo
               Text(
                 widget.label, // Usando o rótulo passado como parâmetro
                 style: const TextStyle(

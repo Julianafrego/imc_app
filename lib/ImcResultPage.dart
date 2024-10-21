@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imc_app/main.dart';
 import './colors.dart';
-import './main.dart';
+
 
 class ImcResultPage extends StatelessWidget {
   final double imc;
